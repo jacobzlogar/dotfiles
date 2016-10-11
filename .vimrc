@@ -10,8 +10,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'jwalton512/vim-blade'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-airline/vim-airline'
-Plug 'joshdick/onedark.vim'
-Plug 'joshdick/airline-onedark.vim'
+Plug 'josuegaleas/jay'
 call plug#end()
 
 set nocompatible
@@ -21,8 +20,8 @@ set noerrorbells
 set autowrite
 set modelines=1
 set title
-syntax on
-colorscheme onedark
+syntax enable
+colorscheme jay
 set background=dark
 set t_Co=256
 set list
