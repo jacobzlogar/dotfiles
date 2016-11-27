@@ -11,6 +11,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'jwalton512/vim-blade'
 Plug 'josuegaleas/jay'
 Plug 'flazz/vim-colorschemes'
+Plug 'mxw/vim-jsx'
+Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
@@ -19,6 +21,7 @@ syntax enable
 
 set nocompatible
 set fillchars+=vert:\ 
+scriptencoding=utf-8
 set visualbell
 set noerrorbells
 set autowrite
@@ -38,7 +41,6 @@ set scrolloff=3
 set lcs=tab:.\ ,trail:·,eol:¬,nbsp:_
 set splitbelow
 set splitright
-set softtabstop=4
 set expandtab
 set shiftwidth=4
 set backspace=indent,eol,start
@@ -54,6 +56,7 @@ set timeoutlen=1000 ttimeoutlen=0
 set backup
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
+set laststatus=2
 
 highlight SignColumn ctermfg=NONE ctermbg=NONE
 highlight LineNr ctermfg=NONE ctermbg=NONE
@@ -61,6 +64,7 @@ highlight LineNr ctermfg=NONE ctermbg=NONE
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let g:php_cs_fixer_level = "psr2"
 let mapleader="-"
+let g:jsx_ext_required = 0
 let g:netrw_liststyle=3
 let g:gitgutter_max_signs = 500
 let g:gitgutter_override_sign_column_highlight = 0
