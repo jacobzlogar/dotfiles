@@ -15,6 +15,8 @@ Plug 'mxw/vim-jsx'
 Plug 'itchyny/lightline.vim'
 Plug 'powerline/powerline'
 Plug 'edkolev/tmuxline.vim'
+Plug 'tpope/vim-eunuch'
+Plug 'posva/vim-vue'
 
 call plug#end()
 
@@ -63,12 +65,13 @@ set laststatus=2
 highlight SignColumn ctermfg=NONE ctermbg=NONE
 highlight LineNr ctermfg=NONE ctermbg=NONE
 
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 let g:php_cs_fixer_level = "psr2"
 let mapleader="-"
 let g:jsx_ext_required = 0
 let g:netrw_liststyle=3
 let g:gitgutter_max_signs = 500
+let NERDTreeMinimalUI = 1
 let g:gitgutter_override_sign_column_highlight = 0
 let g:lightline = {
       \ 'colorscheme': 'wombat',
@@ -90,6 +93,7 @@ let g:lightline = {
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' }
       \ }
+
 function! LightlineModified()
   if &filetype == "help"
     return ""
@@ -115,7 +119,7 @@ endfunction
 function! LightlineFugitive()
   if exists("*fugitive#head")
     let branch = fugitive#head()
-    return branch !=# '' ? ''.branch : ''
+    return branch !=# '' ? ' '.branch : ''
   endif
   return ''
 endfunction
@@ -125,7 +129,6 @@ function! LightlineFilename()
        \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
        \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
 endfunction
-
 
 map <leader>c :w !pbcopy<CR>
 map <leader>s :Ag <cr>
