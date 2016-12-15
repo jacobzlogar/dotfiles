@@ -12,6 +12,7 @@ alias cockroach="~/code/cockroach-beta-20160728.darwin-10.9-amd64/cockroach"
 export GHC_DOT_APP="/Applications/ghc-7.10.3.app"
 export ngrok="/Applications/ngrok"
 alias digitalocean="ssh root@192.241.141.54"
+alias tail='colortail -k ~/.colortail/conf.default '
 
 source $ZSH/oh-my-zsh.sh
 alias vim="nvim"
