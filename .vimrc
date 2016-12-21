@@ -20,8 +20,7 @@ call plug#end()
 if (has("termguicolors"))
   set termguicolors
 endif
-set background=dark
-colorscheme spacemacs-theme
+colorscheme minimalist 
 syntax on
 
 set nocompatible
@@ -32,16 +31,13 @@ set noerrorbells
 set autowrite
 set modelines=1
 set title
-set background=dark
 set t_Co=256
 set list
 set number
 set showmode
 set mouse=a
-set number
 set ruler
-set showmode
-set wrap
+set nowrap
 set scrolloff=3
 set lcs=tab:.\ ,trail:·,eol:¬,nbsp:_,
 set splitbelow
@@ -50,8 +46,6 @@ set expandtab
 set shiftwidth=4
 set backspace=indent,eol,start
 set softtabstop=4
-set autoindent
-set copyindent
 set tabstop=4
 set smarttab
 set wildmenu
@@ -65,13 +59,19 @@ set directory=~/.vim/swaps
 set laststatus=2
 set updatetime=250
 
+filetype on
+filetype plugin on
+filetype indent on
+
 highlight SignColumn ctermfg=none ctermbg=none
 highlight LineNr ctermfg=none ctermbg=none
-highlight GitGutterAdd ctermbg=none
-highlight GitGutterChange ctermbg=none
-highlight GitGutterDelete ctermbg=none
+highlight GitGutterAdd ctermfg=blue ctermbg=none
+highlight GitGutterChange ctermfg=yellow ctermbg=none
+highlight GitGutterDelete ctermfg=red ctermbg=none
 highlight GitGutterChangeDelete ctermbg=none
-highlight StatusLine ctermbg=none
+highlight Statusline ctermbg=none
+hi Normal ctermbg=none
+highlight NonText ctermbg=none
 
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 let g:php_cs_fixer_level = "psr2"
@@ -79,7 +79,6 @@ let mapleader="-"
 let g:jsx_ext_required = 0
 let g:netrw_liststyle=3
 let g:gitgutter_max_signs = 500
-let g:gitgutter_sign_column_always = 1
 let g:gitgutter_override_sign_column_highlight = 0
 
 map <leader>s :Ag 
@@ -92,6 +91,7 @@ map <leader>B :b#<cr>
 map <leader>4 :GitGutterToggle<cr>
 map <leader>5 :GitGutterLineHighlightsToggle<cr>
 
+nmap <Tab> :b#<CR>
 nnoremap <CR> :noh<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader><esc> :q!<CR>
@@ -107,7 +107,4 @@ nnoremap <C-l> <C-w>l
 
 if exists("&undodir")
     set undodir=~/.vim/undo
-endif
-if !exists('g:airline_symbols')
-      let g:airline_symbols = {}
 endif
