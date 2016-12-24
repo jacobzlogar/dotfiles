@@ -1,3 +1,4 @@
+" Plugins
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -13,14 +14,27 @@ Plug 'mxw/vim-jsx'
 Plug 'dikiaap/minimalist'
 Plug 'tpope/vim-eunuch'
 Plug 'posva/vim-vue'
-Plug 'colepeters/spacemacs-theme.vim'
+Plug 'vim-syntastic/syntastic'
 
 call plug#end()
 
+" Syntastic Settings
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+
+let g:syntastic_vue_checkers = ['eslint']
+let g:syntastic_quiet_messages = { "type": "style" }
+
+" Vue Options
+autocmd Filetype vue setlocal ts=2 sw=2 sts=0
+
+" Colorscheme
 if (has("termguicolors"))
   set termguicolors
 endif
-colorscheme minimalist 
+colorscheme minimalist
 syntax on
 
 set nocompatible
@@ -70,7 +84,7 @@ highlight GitGutterChange ctermfg=yellow ctermbg=none
 highlight GitGutterDelete ctermfg=red ctermbg=none
 highlight GitGutterChangeDelete ctermbg=none
 highlight Statusline ctermbg=none
-hi Normal ctermbg=none
+highlight Normal ctermbg=none
 highlight NonText ctermbg=none
 
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
@@ -81,6 +95,8 @@ let g:netrw_liststyle=3
 let g:gitgutter_max_signs = 500
 let g:gitgutter_override_sign_column_highlight = 0
 
+
+" Mappings
 map <leader>s :Ag 
 map <leader>f :Files<cr>
 map <leader>b :Buffers<cr>
@@ -91,7 +107,7 @@ map <leader>B :b#<cr>
 map <leader>4 :GitGutterToggle<cr>
 map <leader>5 :GitGutterLineHighlightsToggle<cr>
 
-nmap <Tab> :b#<CR>
+nnoremap <Tab> :b#<CR>
 nnoremap <CR> :noh<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader><esc> :q!<CR>
@@ -105,6 +121,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Undo
 if exists("&undodir")
     set undodir=~/.vim/undo
 endif
