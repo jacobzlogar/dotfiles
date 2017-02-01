@@ -35,11 +35,11 @@ let g:syntastic_go_checkers = ['gofmt']
 let g:syntastic_blade_checkers = ['blade']
 
 " Colorscheme
-set t_Co=256
-if (has("termguicolors"))
-  set termguicolors
-endif
 colorscheme minimalist
+
+" Highlight
+autocmd ColorScheme * highlight Normal ctermbg=none
+autocmd ColorScheme * highlight NonText ctermbg=none
 
 " Syntax
 syntax on
@@ -74,18 +74,19 @@ set visualbell
 set noerrorbells
 
 " Gutter
-highlight SignColumn ctermfg=none ctermbg=none
-highlight LineNr ctermfg=none ctermbg=none
-highlight GitGutterAdd ctermfg=blue ctermbg=none
-highlight GitGutterChange ctermfg=yellow ctermbg=none
-highlight GitGutterDelete ctermfg=red ctermbg=none
-highlight GitGutterChangeDelete ctermbg=none
+hi SignColumn ctermfg=none ctermbg=none
+hi LineNr ctermfg=none ctermbg=none
+hi GitGutterAdd ctermfg=blue ctermbg=none
+hi GitGutterChange ctermfg=yellow ctermbg=none
+hi GitGutterDelete ctermfg=red ctermbg=none
+hi GitGutterChangeDelete ctermbg=none
 set relativenumber
 let g:gitgutter_max_signs = 500
+let g:gitgutter_sign_column_always = 1
 let g:gitgutter_override_sign_column_highlight = 0
 
 " Statusline Options
-highlight Statusline ctermbg=none
+hi Statusline ctermbg=none
 set modelines=1
 set title
 set number
@@ -111,13 +112,7 @@ set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 
 " Filetype
-filetype on
-filetype plugin on
-filetype indent on
-
-" Highlight
-highlight Normal ctermbg=none
-highlight NonText ctermbg=none
+filetype plugin indent on
 
 " Misc
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'

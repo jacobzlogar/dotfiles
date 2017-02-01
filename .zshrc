@@ -3,6 +3,8 @@ export ZSH=/Users/Jacob/.oh-my-zsh
 ZSH_THEME="xiong-chiamiov-plus"
 plugins=(git)
 
+alias vim="nvim"
+export PATH="/usr/local/sbin:$PATH"
 export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/Users/Jacob/.composer/vendor/bin"
 export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
 alias laravelPermissions='chmod +x ~/.composer/vendor/bin/laravel'
@@ -18,7 +20,6 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
 source $ZSH/oh-my-zsh.sh
-alias vim="nvim"
 alias homestead="cd ~/homestead && vagrant up && vagrant ssh"
 alias v="vagrant"
 alias s="screen"
