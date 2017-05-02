@@ -10,6 +10,7 @@ Plug 'posva/vim-vue'
 Plug 'pangloss/vim-javascript'
 Plug 'crusoexia/vim-javascript-lib'
 Plug 'StanAngeloff/php.vim'
+Plug 'nvie/vim-flake8'
 
 call plug#end()
 
@@ -60,9 +61,7 @@ autocmd BufRead,BufNewFile *.blade.php setlocal filetype=html
 syntax on
 
 " Colorscheme
-set termguicolors
 colorscheme monokai
-set t_Co=256
 
 " Misc.
 set nowrap

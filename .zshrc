@@ -22,6 +22,7 @@ export PATH=$PATH:$GOROOT/bin
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
+source $HOME/.cargo/env
 source $ZSH/oh-my-zsh.sh
 alias homestead="cd ~/homestead && vagrant up && vagrant ssh"
 alias v="vagrant"
