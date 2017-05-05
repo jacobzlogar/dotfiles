@@ -4,13 +4,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'crusoexia/vim-monokai'
 Plug 'neomake/neomake'
 Plug 'posva/vim-vue'
-Plug 'pangloss/vim-javascript'
-Plug 'crusoexia/vim-javascript-lib'
-Plug 'StanAngeloff/php.vim'
-Plug 'nvie/vim-flake8'
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -31,6 +27,9 @@ cmap WQ wq
 cmap Wq wq
 cmap W w
 cmap Q q
+
+" Colorscheme
+colorscheme petrel
 
 " Linting
 autocmd! BufWritePost * Neomake
@@ -59,9 +58,6 @@ autocmd BufRead,BufNewFile *.blade.php setlocal filetype=html
 
 " Syntax
 syntax on
-
-" Colorscheme
-colorscheme monokai
 
 " Misc.
 set nowrap
