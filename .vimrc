@@ -1,6 +1,5 @@
 " Plugins
 call plug#begin('~/.vim/plugged')
-
 Plug 'mhartington/oceanic-next'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -8,8 +7,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'neomake/neomake'
 Plug 'posva/vim-vue'
 Plug 'sheerun/vim-polyglot'
-
 call plug#end()
+
+" Syntax
+syntax on
+autocmd BufEnter * :syntax sync fromstart
 
 " Binds
 let mapleader="-"
@@ -38,7 +40,6 @@ autocmd ColorScheme * highlight NonText ctermbg=none guibg=none
 cmap WQ wq
 cmap Wq wq
 cmap W w
-
 cmap Q q
 
 " Colorscheme
@@ -53,14 +54,11 @@ let g:gitgutter_sign_column_always = 1
 let g:gitgutter_override_sign_column_highlight = 0
 
 " Vue
-autocmd BufRead,BufNewFile *.vue setlocal filetype=javascript
-autocmd FileType vue syntax sync fromstart
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
 
 " Blade
 autocmd BufRead,BufNewFile *.blade.php setlocal filetype=html
 
-" Syntax
-syntax on
 
 " Misc.
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
