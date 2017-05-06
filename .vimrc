@@ -61,7 +61,7 @@ autocmd BufRead,BufNewFile *.blade.php setlocal filetype=html
 
 
 " Misc.
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag --ignore "/public" -g ""'
 set nowrap
 set lcs=tab:.\ ,trail:·,eol:¬,nbsp:_,
 set number
