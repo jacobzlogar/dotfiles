@@ -1,12 +1,14 @@
-" Plugins
 call plug#begin('~/.vim/plugged')
+" Colorscheme plugin
 Plug 'mhartington/oceanic-next'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'neomake/neomake'
+" Plugins
 Plug 'posva/vim-vue'
+Plug 'neomake/neomake'
 Plug 'sheerun/vim-polyglot'
+Plug 'airblade/vim-gitgutter'
+" Fzf wrapper
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 call plug#end()
 
 " Syntax
@@ -61,27 +63,20 @@ autocmd BufRead,BufNewFile *.blade.php setlocal filetype=html
 
 
 " Misc.
-let $FZF_DEFAULT_COMMAND = 'ag --ignore "/public" -g ""'
-set nowrap
-set lcs=tab:.\ ,trail:·,eol:¬,nbsp:_,
 set number
-set clipboard=unnamed
-
-" Bells
-set visualbell
+set nowrap
+set smarttab
+set copyindent
+set autoindent
 set noerrorbells
+set clipboard=unnamed
+set backspace=indent,eol,start
+set lcs=tab:.\ ,trail:·,eol:¬,nbsp:_,
+let $FZF_DEFAULT_COMMAND = 'ag --ignore "/public" -g ""'
 
 " Formatting
 autocmd FileType php setlocal shiftwidth=4 softtabstop=4
 autocmd FileType blade setlocal shiftwidth=2 softtabstop=2
-set expandtab
-set softtabstop=2
-set shiftwidth=2
-set autoindent
-set copyindent
-set shiftround
-set smarttab
-set backspace=indent,eol,start
 
 function! PhpSyntaxOverride()
   hi! def link phpDocTags  phpDefine
