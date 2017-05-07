@@ -1,21 +1,40 @@
 call plug#begin('~/.vim/plugged')
-" Colorscheme plugin
-Plug 'mhartington/oceanic-next'
+" Colorscheme
+Plug 'nightsense/seabird'
 " Plugins
 Plug 'posva/vim-vue'
 Plug 'neomake/neomake'
 Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
-" Fzf wrapper
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 call plug#end()
 
-" Syntax
+let $FZF_DEFAULT_COMMAND = 'ag --ignore "/public" -g ""'
+
+" Jacob Zlogar " 🌴
 syntax on
+syntax sync minlines=200
 autocmd BufEnter * :syntax sync fromstart
 
-" Binds
+" Colorscheme
+colorscheme petrel
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+if (has("termguicolors"))
+ set termguicolors
+endif
+" 
+hi Normal ctermbg=none guibg=none
+hi LineNr ctermbg=none guibg=none
+hi NonText ctermbg=none guibg=none
+
+" Remap
+cmap WQ wq
+cmap Wq wq
+cmap W w
+cmap Q q
+
+" Mappings
 let mapleader="-"
 map <leader>g :Commits<cr>
 map <leader>s :Ag 
@@ -28,53 +47,34 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Colors
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-if (has("termguicolors"))
- set termguicolors
-endif
-
-" Highlight
-autocmd ColorScheme * highlight LineNr guibg=none ctermbg=none
-autocmd ColorScheme * highlight NonText ctermbg=none guibg=none
-
-" Some Commands
-cmap WQ wq
-cmap Wq wq
-cmap W w
-cmap Q q
-
-" Colorscheme
-colorscheme petrel
-
-" Linting
+" Neomake
 autocmd! BufWritePost * Neomake
+let g:neomake_vue_eslint_maker = {
+    \ 'args': ['eslint-config-vue eslint-plugin-vue'],
+    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+    \ }
+let g:neomake_vue_enabled_makers = ['eslint']
 
-" Gutter
+" GitGutter
 let g:gitgutter_max_signs = 500
 let g:gitgutter_sign_column_always = 1
 let g:gitgutter_override_sign_column_highlight = 0
 
-" Vue
-autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
-
-" Blade
-autocmd BufRead,BufNewFile *.blade.php setlocal filetype=html
-
-
-" Misc.
+" Misc
 set number
 set nowrap
 set smarttab
 set copyindent
 set autoindent
 set noerrorbells
+set shiftwidth=2
+set softtabstop=2
 set clipboard=unnamed
 set backspace=indent,eol,start
 set lcs=tab:.\ ,trail:·,eol:¬,nbsp:_,
-let $FZF_DEFAULT_COMMAND = 'ag --ignore "/public" -g ""'
 
-" Formatting
+" Php/Blade
+autocmd FileType *.blade.php setlocal filetype=html
 autocmd FileType php setlocal shiftwidth=4 softtabstop=4
 autocmd FileType blade setlocal shiftwidth=2 softtabstop=2
 
