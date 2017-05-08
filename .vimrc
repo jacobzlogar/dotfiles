@@ -12,7 +12,12 @@ call plug#end()
 
 let $FZF_DEFAULT_COMMAND = 'ag --ignore "/public" -g ""'
 
-" Jacob Zlogar " 🌴
+ " Jacob Zlogar " 
+🌴
+🌴
+🌴
+" 5/8/17
+
 syntax on
 syntax sync minlines=200
 autocmd BufEnter * :syntax sync fromstart
@@ -23,7 +28,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 if (has("termguicolors"))
  set termguicolors
 endif
-" 
+" Colorscheme overrides 
 hi Normal ctermbg=none guibg=none
 hi LineNr ctermbg=none guibg=none
 hi NonText ctermbg=none guibg=none
