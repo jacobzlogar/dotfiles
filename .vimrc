@@ -3,19 +3,18 @@ call plug#begin('~/.vim/plugged')
 Plug 'nightsense/seabird'
 " Plugins
 Plug 'posva/vim-vue'
-Plug 'neomake/neomake'
 Plug 'sheerun/vim-polyglot'
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 call plug#end()
 
 let $FZF_DEFAULT_COMMAND = 'ag --ignore "/public" -g ""'
 
- " Jacob Zlogar " 
-🌴
-🌴
-🌴
+" Jacob Zlogar " 
+" 🌴
+" 🌴
+" 🌴
 " 5/8/17
 
 syntax on
@@ -30,8 +29,12 @@ if (has("termguicolors"))
 endif
 " Colorscheme overrides 
 hi Normal ctermbg=none guibg=none
-hi LineNr ctermbg=none guibg=none
 hi NonText ctermbg=none guibg=none
+hi LineNr ctermbg=none guibg=none
+hi SignColum ctermbg=none guibg=none
+hi DiffAdd guibg=none ctermbg=none ctermfg=120
+hi DiffDelete guibg=none ctermbg=none ctermfg=167
+hi DiffChange guibg=none ctermbg=none ctermfg=227
 
 " Remap
 cmap WQ wq
@@ -52,43 +55,22 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Neomake
-autocmd! BufWritePost * Neomake
-let g:neomake_vue_eslint_maker = {
-    \ 'args': ['eslint-config-vue eslint-plugin-vue'],
-    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-    \ }
-let g:neomake_vue_enabled_makers = ['eslint']
-
-" GitGutter
-let g:gitgutter_max_signs = 500
-let g:gitgutter_sign_column_always = 1
-let g:gitgutter_override_sign_column_highlight = 0
-
 " Misc
+set mouse=a
+set noswapfile
 set number
 set nowrap
 set smarttab
 set copyindent
 set autoindent
+set shiftround
 set noerrorbells
 set shiftwidth=2
 set softtabstop=2
+set expandtab
 set clipboard=unnamed
 set backspace=indent,eol,start
 set lcs=tab:.\ ,trail:·,eol:¬,nbsp:_,
 
 " Php/Blade
-autocmd FileType *.blade.php setlocal filetype=html
-autocmd FileType php setlocal shiftwidth=4 softtabstop=4
-autocmd FileType blade setlocal shiftwidth=2 softtabstop=2
-
-function! PhpSyntaxOverride()
-  hi! def link phpDocTags  phpDefine
-  hi! def link phpDocParam phpType
-endfunction
-
-augroup phpSyntaxOverride
-  autocmd!
-  autocmd FileType php call PhpSyntaxOverride()
-augroup END
+autocmd FileType php setlocal shiftwidth=4 tabstop=4

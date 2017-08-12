@@ -1,7 +1,13 @@
 export ZSH=/Users/Jacob/.oh-my-zsh
 
-ZSH_THEME="xiong-chiamiov-plus"
-plugins=(git)
+autoload -U promptinit; promptinit
+
+# optionally define some options
+PURE_CMD_MAX_EXEC_TIME=10
+
+prompt pure
+
+export ZSH_THEME="pure"
 
 alias vim="nvim"
 export TERM='screen-256color'
@@ -16,3 +22,5 @@ source $ZSH/oh-my-zsh.sh
 
 export NVM_DIR="/Users/Jacob/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
