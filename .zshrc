@@ -17,6 +17,9 @@ export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
 alias laravel="~/.composer/vendor/bin/laravel"
 export ngrok="/Applications/ngrok"
 alias digitalocean="ssh root@192.241.141.54"
+export OPENSSL_INCLUDE_DIR=/usr/local/opt/openssl/include
+export DEP_OPENSSL_INCLUDE=/usr/local/opt/openssl/include
+export openssl=/usr/local/opt/openssl
 
 source $ZSH/oh-my-zsh.sh
 
