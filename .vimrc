@@ -44,6 +44,7 @@ cmap Q q
 
 " Mappings
 let mapleader="-"
+map <leader>q :q!<cr>
 map <leader>g :Commits<cr>
 map <leader>s :Ag 
 map <leader>f :Files<cr>
