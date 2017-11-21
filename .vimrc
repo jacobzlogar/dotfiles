@@ -4,6 +4,7 @@ Plug 'nightsense/seabird'
 " Plugins
 Plug 'posva/vim-vue'
 Plug 'sheerun/vim-polyglot'
+Plug 'OrangeT/vim-csharp'
 Plug 'mhinz/vim-signify'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -49,6 +50,7 @@ map <leader>g :Commits<cr>
 map <leader>s :Ag 
 map <leader>f :Files<cr>
 map <leader>b :Buffers<cr>
+map <leader>) :g/^$/d<cr>
 nnoremap <cr> :noh<cr>
 nnoremap <Tab> :b#<CR>
 nnoremap <C-h> <C-w>h
@@ -75,3 +77,8 @@ set lcs=tab:.\ ,trail:·,eol:¬,nbsp:_,
 
 " Php/Blade
 autocmd FileType php setlocal shiftwidth=4 tabstop=4
+autocmd FileType blade setlocal shiftwidth=2 softtabstop=2
+
+" C#/.Net
+autocmd FileType cs setlocal shiftwidth=4 tabstop=4
+autocmd FileType cshtml setlocal shiftwidth=4 tabstop=4
