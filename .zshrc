@@ -1,5 +1,7 @@
 export ZSH=/Users/Jacob/.oh-my-zsh
 
+set -o vi
+
 alias vim="nvim"
 export TERM='screen-256color'
 
@@ -7,10 +9,13 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/Users/Jacob/.composer/vendor/bin"
 export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
 alias laravel="~/.composer/vendor/bin/laravel"
-alias digitalocean="ssh root@192.241.141.54"
+alias irc="ssh root@159.65.255.31"
 export OPENSSL_INCLUDE_DIR=/usr/local/opt/openssl/include
 export DEP_OPENSSL_INCLUDE=/usr/local/opt/openssl/include
 export openssl=/usr/local/opt/openssl
+export NODE_PATH='/usr/local/lib/node_modules'
+
+plugins=(vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 

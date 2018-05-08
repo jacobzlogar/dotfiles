@@ -2,9 +2,9 @@ call plug#begin('~/.vim/plugged')
 " Colorscheme
 Plug 'nightsense/seabird'
 " Plugins
+Plug 'tpope/vim-fugitive'
 Plug 'posva/vim-vue'
 Plug 'sheerun/vim-polyglot'
-Plug 'OrangeT/vim-csharp'
 Plug 'mhinz/vim-signify'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -12,7 +12,7 @@ call plug#end()
 
 let $FZF_DEFAULT_COMMAND = 'ag --ignore "/public" -g ""'
 
-" Jacob Zlogar " 
+" Jacob Zlogar "
 " 🌴
 " 🌴
 " 🌴
@@ -28,7 +28,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 if (has("termguicolors"))
  set termguicolors
 endif
-" Colorscheme overrides 
+" Colorscheme overrides
 hi Normal ctermbg=none guibg=none
 hi NonText ctermbg=none guibg=none
 hi LineNr ctermbg=none guibg=none
@@ -44,12 +44,15 @@ cmap W w
 cmap Q q
 
 " Mappings
+imap jj <Esc>
 let mapleader="-"
 map <leader>q :q!<cr>
-map <leader>g :Commits<cr>
+map <leader>g :Gbrowse<cr>
+map <leader>i :Commits<cr>
 map <leader>s :Ag 
 map <leader>f :Files<cr>
 map <leader>b :Buffers<cr>
+map <leader>t :tabs<cr>
 map <leader>) :g/^$/d<cr>
 nnoremap <cr> :noh<cr>
 nnoremap <Tab> :b#<CR>
@@ -59,6 +62,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " Misc
+set relativenumber
+set statusline=[%n]\ %<%F\ \ %=\ line:%l/%L\ col:%c\ \ @%{strftime(\"%H:%M:%S\")}
+set statusline+=%{fugitive#statusline()}
+set laststatus=2
 set mouse=a
 set noswapfile
 set number
@@ -68,8 +75,6 @@ set copyindent
 set autoindent
 set shiftround
 set noerrorbells
-set shiftwidth=2
-set softtabstop=2
 set expandtab
 set clipboard=unnamed
 set backspace=indent,eol,start
@@ -78,6 +83,10 @@ set lcs=tab:.\ ,trail:·,eol:¬,nbsp:_,
 " Php/Blade
 autocmd FileType php setlocal shiftwidth=4 tabstop=4
 autocmd FileType blade setlocal shiftwidth=2 softtabstop=2
+
+" Javascript/Vue
+autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2
+autocmd FileType vue setlocal shiftwidth=2 softtabstop=2
 
 " C#/.Net
 autocmd FileType cs setlocal shiftwidth=4 tabstop=4
