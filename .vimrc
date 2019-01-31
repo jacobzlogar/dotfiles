@@ -35,13 +35,12 @@ hi LineNr ctermbg=none guibg=none
 hi SignColum ctermbg=none guibg=none
 hi DiffAdd guibg=none ctermbg=none ctermfg=120
 hi DiffDelete guibg=none ctermbg=none ctermfg=167
+hi AleSignError guibg=none ctermbg=none ctermfg=167
 hi DiffChange guibg=none ctermbg=none ctermfg=227
 
 " Remap
 cmap WQ wq
 cmap Wq wq
-cmap W w
-cmap Q q
 
 " Mappings
 imap jj <Esc>
@@ -55,6 +54,7 @@ map <leader>b :Buffers<cr>
 map <leader>t :tabs<cr>
 map <leader>) :g/^$/d<cr>
 nnoremap <cr> :noh<cr>
+nnoremap <Tab> :b#<CR>
 nnoremap <Tab> :b#<CR>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -91,3 +91,4 @@ autocmd FileType vue setlocal shiftwidth=2 softtabstop=2
 " C#/.Net
 autocmd FileType cs setlocal shiftwidth=4 tabstop=4
 autocmd FileType cshtml setlocal shiftwidth=4 tabstop=4
+let g:python3_host_prog = '/usr/local/bin/python3'
