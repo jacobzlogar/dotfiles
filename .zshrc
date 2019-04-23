@@ -3,11 +3,12 @@ export ZSH=/Users/Jacob/.oh-my-zsh
 set -o vi
 
 alias vim="/usr/local/bin/nvim-osx64/bin/nvim"
-export TERM='screen-256color'
-
-export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin:/usr/local/bin:/Users/Jacob/.composer/vendor/bin:$PATH"
+alias t='sh ~/code/dotfiles/tmux-setup.sh'
 alias irc="ssh root@159.65.255.31"
 alias androidemulator="/Users/Jacob/Library/Android/sdk/tools/emulator"
+
+export TERM='screen-256color'
+export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin:/usr/local/bin:/Users/Jacob/.composer/vendor/bin:$PATH"
 export OPENSSL_INCLUDE_DIR=/usr/local/opt/openssl/include
 export DEP_OPENSSL_INCLUDE=/usr/local/opt/openssl/include
 export openssl=/usr/local/opt/openssl

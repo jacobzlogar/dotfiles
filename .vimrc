@@ -3,10 +3,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'nightsense/seabird'
 " Plugins
 Plug 'tpope/vim-fugitive'
-Plug 'posva/vim-vue'
 Plug 'sheerun/vim-polyglot'
 Plug 'mhinz/vim-signify'
+Plug 'w0rp/ale'
 Plug 'junegunn/fzf.vim'
+Plug 'ajh17/VimCompletesMe'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 call plug#end()
 
@@ -21,6 +22,8 @@ let $FZF_DEFAULT_COMMAND = 'ag --ignore "/public" -g ""'
 syntax on
 syntax sync minlines=200
 autocmd BufEnter * :syntax sync fromstart
+autocmd FileType php let b:vcm_tab_complete = 'php'
+autocmd FileType js let b:vcm_tab_complete = 'js'
 
 " Colorscheme
 colorscheme petrel
@@ -35,8 +38,14 @@ hi LineNr ctermbg=none guibg=none
 hi SignColum ctermbg=none guibg=none
 hi DiffAdd guibg=none ctermbg=none ctermfg=120
 hi DiffDelete guibg=none ctermbg=none ctermfg=167
-hi AleSignError guibg=none ctermbg=none ctermfg=167
 hi DiffChange guibg=none ctermbg=none ctermfg=227
+
+" ale symbols
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+highlight ALEWarningSign guibg=none ctermbg=none guifg=yellow
+highlight ALEErrorSign guibg=none ctermbg=none guifg=Red
+let g:ale_sign_column_always = 1
 
 " Remap
 cmap WQ wq
@@ -60,9 +69,11 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+tnoremap <Esc> <C-\><C-n>
 
 " Misc
 set relativenumber
+set signcolumn="yes"
 set statusline=[%n]\ %<%F\ \ %=\ line:%l/%L\ col:%c\ \ @%{strftime(\"%H:%M:%S\")}
 set statusline+=%{fugitive#statusline()}
 set laststatus=2
