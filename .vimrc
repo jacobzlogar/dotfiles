@@ -43,9 +43,11 @@ hi DiffChange guibg=none ctermbg=none ctermfg=227
 " ale symbols
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
+let g:ale_linters_explicit = 1
 highlight ALEWarningSign guibg=none ctermbg=none guifg=yellow
 highlight ALEErrorSign guibg=none ctermbg=none guifg=Red
-let g:ale_sign_column_always = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
 
 " Remap
 cmap WQ wq
@@ -55,6 +57,8 @@ cmap Wq wq
 imap jj <Esc>
 let mapleader="-"
 map <leader>q :q!<cr>
+map <leader>cn :cn<cr>
+map <leader>cN :cN<cr>
 map <leader>g :Gbrowse<cr>
 map <leader>i :Commits<cr>
 map <leader>s :Ag 
@@ -103,3 +107,7 @@ autocmd FileType vue setlocal shiftwidth=2 softtabstop=2
 autocmd FileType cs setlocal shiftwidth=4 tabstop=4
 autocmd FileType cshtml setlocal shiftwidth=4 tabstop=4
 let g:python3_host_prog = '/usr/local/bin/python3'
+
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'

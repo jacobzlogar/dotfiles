@@ -1,0 +1,14 @@
+--exclude=.git 
+--exclude=node_modules 
+--exclude=test
+--exclude=public
+--regex-php=/get([a-z|A-Z|0-9]+)Attribute/\1/
+--regex-php=/scope([a-z|A-Z|0-9]+)/\1/
+--langmap=javascript:.js.es6.es.jsx
+--javascript-kinds=-c-f-m-p-v
+--regex-javascript=/^[ \t]*([a-z]+[ \t]+)*class[ \t]+([A-Za-z0-9_]+)[ \t]*([^)])/\2/c,class,classes/
+--regex-javascript=/^[ \t]*([a-z]+[ \t]+)*const[ \t]+([A-Za-z0-9_]+)[ \t]*([^)])/\2/c,const/
+--regex-javascript=/^[ \t]*([a-z]+[ \t]+)*type[ \t]+([A-Za-z0-9_]+)[ \t]*([^)])/\2/c,type/
+--regex-javascript=/^[ \t]*([a-z]+[ \t]+)*[ \t]+([A-Za-z0-9_]+) ?\(\)[ \t]*([^)])/\2/c,method/
+--regex-javascript=/^[ \t]*([a-z|A-Z]+)\(\)/\1/
+--regex-javascript=/^[ \t]*([a-z]+[ \t]+)*const[ \t]+([A-Za-z0-9_]+)[ \t]*([^)])/\2/c,class,classes/
