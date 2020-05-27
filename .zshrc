@@ -4,8 +4,11 @@ set -o vi
 
 alias vim="/usr/local/bin/nvim-osx64/bin/nvim"
 alias t='sh ~/code/dotfiles/tmux-setup.sh'
-alias irc="ssh root@159.65.255.31"
+alias irc="ssh root@167.172.151.71"
 alias androidemulator="/Users/Jacob/Library/Android/sdk/tools/emulator"
+alias monocle='sh ~/code/dotfiles/toggle_monocle_mode.sh'
+alias nova-dev='sh ~/code/nova-dev.sh'
+alias php73="brew unlink php@7.4 && brew link --force php@7.3"
 
 export TERM='screen-256color'
 export PATH="~/.cargo/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin:/usr/local/bin:/Users/Jacob/.composer/vendor/bin:$PATH"

@@ -11,7 +11,7 @@ Plug 'ajh17/VimCompletesMe'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 call plug#end()
 
-let $FZF_DEFAULT_COMMAND = 'ag --ignore "/public" -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag --ignore "/public" --ignore "node_modules" -g ""'
 
 " Jacob Zlogar "
 " 🌴
@@ -99,9 +99,9 @@ set lcs=tab:.\ ,trail:·,eol:¬,nbsp:_,
 autocmd FileType php setlocal shiftwidth=4 tabstop=4
 autocmd FileType blade setlocal shiftwidth=2 softtabstop=2
 
-" Javascript/Vue
-autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2
-autocmd FileType vue setlocal shiftwidth=2 softtabstop=2
+" Vue/js
+autocmd FileType vue setlocal shiftwidth=4 tabstop=4
+autocmd FileType js setlocal shiftwidth=4 tabstop=4
 
 " C#/.Net
 autocmd FileType cs setlocal shiftwidth=4 tabstop=4
