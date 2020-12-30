@@ -9,6 +9,7 @@ alias androidemulator="/Users/Jacob/Library/Android/sdk/tools/emulator"
 alias monocle='sh ~/code/dotfiles/toggle_monocle_mode.sh'
 alias nova-dev='sh ~/code/nova-dev.sh'
 alias php73="brew unlink php@7.4 && brew link --force php@7.3"
+alias php74="brew unlink php@7.3 && brew link --force php@7.4"
 
 export TERM='screen-256color'
 export PATH="~/.cargo/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin:/usr/local/bin:/Users/Jacob/.composer/vendor/bin:$PATH"
@@ -46,6 +47,5 @@ alias vsc="open '/Applications/Visual Studio.app'"
 export PATH="$PATH:$HOME/code/spark-installer"
 export PATH="/usr/local/bin:$PATH"
 export LC_CTYPE=en_US.UTF-8
-export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
 export PATH="/usr/local/opt/php@7.3/sbin:$PATH"

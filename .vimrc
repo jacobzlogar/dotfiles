@@ -3,11 +3,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'nightsense/seabird'
 " Plugins
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'sheerun/vim-polyglot'
 Plug 'mhinz/vim-signify'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf.vim'
+Plug 'noahfrederick/vim-laravel'
+Plug 'StanAngeloff/php.vim'
 Plug 'ajh17/VimCompletesMe'
+Plug 'jwalton512/vim-blade'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 call plug#end()
 
@@ -18,13 +22,7 @@ let $FZF_DEFAULT_COMMAND = 'ag --ignore "/public" --ignore "node_modules" -g ""'
 " 🌴
 " 🌴
 " 5/8/17
-
-syntax on
-syntax sync minlines=200
-autocmd BufEnter * :syntax sync fromstart
-autocmd FileType php let b:vcm_tab_complete = 'php'
-autocmd FileType js let b:vcm_tab_complete = 'js'
-
+set updatetime=100
 " Colorscheme
 colorscheme petrel
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -39,15 +37,17 @@ hi SignColum ctermbg=none guibg=none
 hi DiffAdd guibg=none ctermbg=none ctermfg=120
 hi DiffDelete guibg=none ctermbg=none ctermfg=167
 hi DiffChange guibg=none ctermbg=none ctermfg=227
+highlight ALEWarningSign guifg=cyan
+highlight ALEErrorSign guifg=yellow
 
 " ale symbols
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
-let g:ale_linters_explicit = 1
-highlight ALEWarningSign guibg=none ctermbg=none guifg=yellow
-highlight ALEErrorSign guibg=none ctermbg=none guifg=Red
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
+let g:ale_sign_column_always = 1
+let g:php_syntax_extensions_enabled = ["bcmath", "bz2", "core", "curl", "date", "dom", "ereg", "gd", "gettext", "hash", "iconv", "json", "libxml", "mbstring", "mcrypt", "mhash", "mysql", "mysqli", "openssl", "pcre", "pdo", "pgsql", "phar", "reflection", "session", "simplexml", "soap", "sockets", "spl", "sqlite3", "standard", "tokenizer", "wddx", "xml", "xmlreader", "xmlwriter", "zip", "zlib"]
+let g:php_version_id = 70400
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
 
 " Remap
 cmap WQ wq
@@ -74,12 +74,27 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 tnoremap <Esc> <C-\><C-n>
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " Misc
 set relativenumber
 set signcolumn="yes"
 set statusline=[%n]\ %<%F\ \ %=\ line:%l/%L\ col:%c\ \ @%{strftime(\"%H:%M:%S\")}
-set statusline+=%{fugitive#statusline()}
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
+
+set statusline+=%{LinterStatus()}
 set laststatus=2
 set mouse=a
 set noswapfile
@@ -111,3 +126,5 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+autocmd BufNewFile,BufRead *.blade.php set syntax=html
+autocmd BufNewFile,BufRead *.blade.php set filetype=html
